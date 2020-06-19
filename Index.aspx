@@ -51,9 +51,7 @@
                         <td align="left">Type Of Property:</td>
                         <td align="left">
                             <asp:RadioButton ID="Residential" runat="server" GroupName="ConstructionType" />
-                            Residential
-                        </td>
-                        <td align="left">
+                            <span style="margin-right: 10px;">Residential</span>
                             <asp:RadioButton ID="Commercial" runat="server" GroupName="ConstructionType" />
                             Commercial
                         </td>
@@ -113,7 +111,7 @@
                         <td style="height: 10px; text-align: center; width: 100%">
                             <asp:Panel ID="pnlResults" runat="server" BackColor="LightGray" Width="200" Height="165" BorderColor="black" BorderWidth="2">
                                 <br />
-                                <asp:Label ID="lblEstimate" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="Red"></asp:Label>
+                                <asp:Label ID="lblEstimate" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ></asp:Label>
                                 <hr />
                                 <asp:Label ID="lblPlansFee" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
                                 <br />
