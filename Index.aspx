@@ -63,7 +63,7 @@
                     <tr>
                         <td text-align: left;>Value Of Job:</td>
                         <td text-align: left; colspan="2">
-                            <asp:TextBox ID="txtValue" runat="server" Width="15em" Height="1.2em"></asp:TextBox>
+                            <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
