@@ -40,7 +40,7 @@
         <div class="col-lg-2" ></div>
         <div class="col-lg-6" >
                 <table width:100%>
-                    <td text-align: center; width="50%">
+                    <td text-align: center; width:50%;>
                         <table width:55%;>
                             <tr>
                                 <td text-align: center; colspan="3">
@@ -139,10 +139,10 @@
                     </div>
         </form>
         <div class= "col-lg-4" >
-            <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
+            <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="250px" >
                 <div class= "row" >
                     <div class= "col-lg-2"></div>
-                    <div class= "col-lg-9 ">
+                    <div class= "col-lg-10 ">
                         <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
                         <br />
                         <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
