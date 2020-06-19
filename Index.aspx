@@ -19,7 +19,7 @@
     </style>
 </head>
 <body style="background-color: #e9f6fb">
-   <img src="ClearwaterLogo.gif" />
+   <img src="ClearwaterLogo.png"/>
    <h1 align="center" style="color: #3785c1">Fee Estimator</h1>
     <form id="form1" runat="server">
          <p>
