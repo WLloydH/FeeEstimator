@@ -6,7 +6,7 @@
     <link rel="shortcut icon" type="image/ico" href="favicon.ico">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
-        .cbTextIndented {
+        .cbTextIndented label{
             font-family :"Helvetica Neue", Helvetica, Arial, sans-serif;
             font-style: normal;
             font-weight: 400;
@@ -83,7 +83,7 @@
                     <tr>
                         <td align="left"></td>
                         <td align="left" colspan="2">
-                            <asp:CheckBox ID="ckbRoof" CssClass="cbTextIndented" Text="Roof" runat="server" /></td>
+                            <asp:CheckBox ID="ckbRoof" CssClass="cbTextIndented" Font="Helvetica Neue"  Text="Roof" runat="server" /></td>
                     </tr>
                       <tr>
                         <td align="left"></td>
