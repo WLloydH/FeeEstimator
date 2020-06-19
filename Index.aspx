@@ -41,8 +41,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="left">Type Of Permit</td>
-                        <td colspan="2" align="left">
+                        <td text-align: left;>Type Of Permit</td>
+                        <td colspan="2" text-align: left;>
                             <asp:DropDownList ID="ddlPermitType" runat="server"></asp:DropDownList>
                         </td>
                     </tr>
@@ -51,8 +51,8 @@
                     </tr>
                     <tr>
 
-                        <td align="left">Type Of Property:</td>
-                        <td align="left">
+                        <td text-align: left;>Type Of Property:</td>
+                        <td text-align: left;>
                             <asp:RadioButton ID="Residential" runat="server" GroupName="ConstructionType" />
                             <span style="margin-right: 10px;">Residential</span>
                             <asp:RadioButton ID="Commercial" runat="server" GroupName="ConstructionType" />
@@ -63,8 +63,8 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td align="left">Value Of Job:</td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;>Value Of Job:</td>
+                        <td text-align: left; colspan="2">
                             <asp:TextBox ID="txtValue" runat="server" Width="15em" Height="1.2em"></asp:TextBox>
                         </td>
                     </tr>
@@ -72,35 +72,35 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td align="left">Trades Included:</td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;>Trades Included:</td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbBuilding" CssClass="cbTextIndented" Text="Building" runat="server" />
                         </td>
                     </tr>
                     <tr>
-                        <td align="left"></td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;></td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbElectric" CssClass="cbTextIndented" Text="Electric" runat="server" />
                         </td>
                     </tr>
                     <tr>
-                        <td align="left"></td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;></td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbRoof" CssClass="cbTextIndented" Font="Helvetica Neue" Text="Roof" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td align="left"></td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;></td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbMechanic" CssClass="cbTextIndented" Text="Mechanic" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td align="left"></td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;></td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbPlumbing" CssClass="cbTextIndented" Text="Plumbing" runat="server" /></td>
                     </tr>
                     <tr>
-                        <td align="left"></td>
-                        <td align="left" colspan="2">
+                        <td text-align: left;></td>
+                        <td text-align: left; colspan="2">
                             <asp:CheckBox ID="ckbGas" CssClass="cbTextIndented" Text="Gas" runat="server" /></td>
                     </tr>
 
@@ -153,7 +153,7 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td align="left">
+                        <td text-align: left;>
                             <asp:Label ID="lblExplainState" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
                         </td>
                     </tr>
