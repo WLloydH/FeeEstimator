@@ -1,5 +1,6 @@
 ﻿
 Imports System.Data.SqlClient
+Imports System.Drawing
 
 Partial Class GovDeptsPlanningIndex
     Inherits System.Web.UI.Page
@@ -153,11 +154,10 @@ Partial Class GovDeptsPlanningIndex
                 End If
                 pnlResults.Visible = True
                 lblEstimate.Text = "Estimated Fees"
-                lblPermitFee.Text = "Permit Fee: " & FormatCurrency(Session("PermitFee"))
-                lblStateFee.Text = "State Fee: " & FormatCurrency(Session("StateFee"))
-                lblTotal.Text = "Total: " & FormatCurrency(Session("Total"))
-                lblTrades.Text = "Trades Fee: " & FormatCurrency(Session("Trades"))
-
+                lblPermitFee.Text = String.Format("Permit Fee : {0:#####.##}", FormatCurrency(Session("PermitFee")))
+                lblStateFee.Text = String.Format("State Fee :  {0:#####.##}", FormatCurrency(Session("StateFee")))
+                lblTrades.Text = String.Format("Trades Fee :   {0:#####.##}", FormatCurrency(Session("Trades")))
+                lblTotal.Text = String.Format("Total :   {0:######.##}", FormatCurrency(Session("Total")))
             End If
 
 
