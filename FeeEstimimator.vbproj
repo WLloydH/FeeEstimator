@@ -86,7 +86,6 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClearwaterLogo - Copy.gif" />
     <Content Include="ClearwaterLogo.gif" />
     <Content Include="ClearwaterLogo.jpg" />
     <Content Include="ClearwaterLogo.png" />
