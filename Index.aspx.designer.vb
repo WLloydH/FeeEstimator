@@ -140,24 +140,6 @@ Partial Public Class GovDeptsPlanningIndex
     Protected WithEvents txtReset As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''lblExplainState control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblExplainState As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblDisclaimer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblDisclaimer As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''pnlResults control.
     '''</summary>
     '''<remarks>
@@ -219,4 +201,22 @@ Partial Public Class GovDeptsPlanningIndex
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblTotal As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblExplainState control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblExplainState As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblDisclaimer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblDisclaimer As Global.System.Web.UI.WebControls.Label
 End Class

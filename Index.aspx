@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Fee Estimator</title>
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -29,20 +29,21 @@
         <div class="col-lg-3" >
             <img src="ClearwaterLogo.png" />
         </div>
-        <div class="col-lg-5 text-center" >
+        <div class="col-lg-6 text-center" >
             <h1 align="center" style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
         </div>
     </div>
 
     <div class="row">
-    <form id="form1" runat="server">
+        <form id="form1" runat="server">
         <p>&nbsp;</p><p>&nbsp;</p>
-        <div class="col-lg-7" >
-                <table width="100%" cellspacing="0" cellpadding="0">
-                    <td align="center" width="50%">
-                        <table width="55%" cellspacing="0" cellpadding="0">
+        <div class="col-lg-2" ></div>
+        <div class="col-lg-6" >
+                <table width:100%>
+                    <td text-align: center; width="50%">
+                        <table width:55%;>
                             <tr>
-                                <td align="center" colspan="3">
+                                <td text-align: center; colspan="3">
                                     <h3 style="text-align: center;">
                                         <asp:Label ID="lblMessage" runat="server"  Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>&nbsp;</h3>
                                 </td>
@@ -132,43 +133,15 @@
                     </table>
                     <br />
                     <br />
-                    <table width="75%" cellspacing="0" cellpadding="0">
-
-                        <tr>
-                            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261">here </a>to view the schedule of fees, rates and charges.
-	                   
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td text-align: left;>
-                                <asp:Label ID="lblExplainState" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblDisclaimer" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
-
-                </td>
-            </table>
-             </div>
-          
-               
+                    
+                    </td>
+                </table>
+                    </div>
         </form>
-    <div class= "col-lg-4" >
+        <div class= "col-lg-4" >
             <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
                 <div class= "row" >
-                <div class= "col-lg-2"></div>
+                    <div class= "col-lg-2"></div>
                     <div class= "col-lg-9 ">
                         <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
                         <br />
@@ -184,21 +157,52 @@
                     </div>
                 </div>
             </asp:Panel>
-            
+        </div>
     </div>
-</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2" ></div>
+        <div class="col-lg-8" >
+            <table width:75%; cellspacing="0" cellpadding="0">
+                <tr>
+                    <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261">here </a>to view the schedule of fees, rates and charges.
+	                   
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td text-align: left;>
+                        <asp:Label ID="lblExplainState"  runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblDisclaimer"  runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
  
     <br /><br/>
         
         <footer class="panel-footer text-center" style="font-size: .75em; font-weight: bolder; background-color: #cfeffd">
             Developed by the City of Clearwater Department of Information Technology
-
             <br />
             <a href="#">
                 <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
             </a>
         </footer>
-</div>
+
 </body>
 </html>
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
