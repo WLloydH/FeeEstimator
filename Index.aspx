@@ -17,20 +17,18 @@
         .cbTextIndented input {
             margin-right: 5px;
         }
+
+        #pnlResults span {
+            text-align: start;
+        }
     </style>
 </head>
 <body style="background-color: #e9f6fb">
     <img src="ClearwaterLogo.png" />
     <h1 align="center" style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
     <form id="form1" runat="server">
-        <p>
-            &nbsp;
-       
-        </p>
-        <p>
-            &nbsp;
-       
-        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <table width="100%" cellspacing="0" cellpadding="0">
             <td align="center" width="50%">
                 <table width="55%" cellspacing="0" cellpadding="0">
@@ -111,21 +109,20 @@
 
                 <table style="margin: 0 auto; width: 100%;">
                     <tr>
-                        <td style="height: 10px; text-align: center; width: 100%">
-                            <asp:Panel ID="pnlResults" runat="server" BackColor="#84d6f7" Width="200" Height="165" BorderWidth="2px" BorderStyle="Ridge">
-                                <asp:Label ID="lblEstimate" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                                <hr />
-                                <asp:Label ID="lblPlansFee" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
+                        <td>
+                            <asp:Panel ID="pnlResults" runat="server" BackColor="#84d6f7" Width="200px" Height="130px" BorderWidth="2px" BorderStyle="Ridge" Direction="LeftToRight" Wrap="False">
+                                <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
                                 <br />
-                                <asp:Label ID="lblPermitFee" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
+                                <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
                                 <br />
-                                <asp:Label ID="lblTrades" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
+                                <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
                                 <br />
-                                <asp:Label ID="lblStateFee" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
-                                <hr />
-                                <asp:Label ID="lblTotal" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
+                                <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
                                 <br />
+                                <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
                                 <br />
+                                <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                               
                             </asp:Panel>
                         </td>
                     </tr>
