@@ -11,7 +11,7 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-style: normal;
             font-weight: 400;
-            font-color: #333333;
+            color: #333333;
         }
 
         .cbTextIndented input {

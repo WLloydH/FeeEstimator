@@ -154,10 +154,10 @@ Partial Class GovDeptsPlanningIndex
                 End If
                 pnlResults.Visible = True
                 lblEstimate.Text = "Estimated Fees"
-                lblPermitFee.Text = String.Format("    Permit Fee: {0:#####.##}", FormatCurrency(Session("PermitFee")))
-                lblStateFee.Text = String.Format("     State Fee:  {0:#####.##}", FormatCurrency(Session("StateFee")))
-                lblTrades.Text = String.Format("       Trades Fee:   {0:#####.##}", FormatCurrency(Session("Trades")))
-                lblTotal.Text = String.Format("Total:               {0:######.##}", FormatCurrency(Session("Total")))
+                lblPermitFee.Text = String.Format("Permit Fee : {0:#####.##}", FormatCurrency(Session("PermitFee")))
+                lblStateFee.Text = String.Format("State Fee :  {0:#####.##}", FormatCurrency(Session("StateFee")))
+                lblTrades.Text = String.Format("Trades Fee :   {0:#####.##}", FormatCurrency(Session("Trades")))
+                lblTotal.Text = String.Format("Total :   {0:######.##}", FormatCurrency(Session("Total")))
             End If
 
 
