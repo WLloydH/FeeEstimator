@@ -1,21 +1,18 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Index.aspx.vb" Inherits="FeeEstimimator.GovDeptsPlanningIndex" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Index.aspx.vb" Inherits="FeeEstimator.GovDeptsPlanningIndex" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Fee Estimator</title>
+    <link rel="shortcut icon"  href="favicon.ico">
 </head>
-<body>
+<body style="background-color: #d8eff8;">
+     <a href="myClearwater.com"> <image src="ClearwaterLogo_200x57.gif" /> </a>
+     <h1 align="center"; style="background-color: #d8eff8; color: #24a2d2; font-size: 3em;">Fee Estimator </h1>
     <form id="form1" runat="server">
-        CityOfClearwater/FeeEstimator
-        <p>
-            &nbsp;
-        </p>
-        <p>
-            &nbsp;
-        </p>
-        <table width="100%" cellspacing="0" cellpadding="0">
+   
+        <table width="100%" cellspacing="0" cellpadding="0"style="background-image: ">
+           
             <td align="center" width="50%">
                 <table width="55%" cellspacing="0" cellpadding="0">
 
@@ -151,7 +148,7 @@
 
                     <tr>
                         <td align="left">
-                            <asp:Label ID="lblExplainState" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="black"></asp:Label>
+                            <asp:Label ID="lblExplainState" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#10395a"></asp:Label>
                         </td>
                     </tr>
 
@@ -160,7 +157,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="lblDisclaimer" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lblDisclaimer" CssClass="Alert" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#10395a"></asp:Label>
                         </td>
                     </tr>
                 </table>
