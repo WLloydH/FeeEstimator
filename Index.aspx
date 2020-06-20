@@ -32,7 +32,6 @@
             <h1 align="center" style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
         </div>
     </div>
-
     <div class="row">
     <form id="form1" runat="server">
         <p>&nbsp;</p><p>&nbsp;</p>
@@ -123,6 +122,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" style="height: 10px; text-align: left;">
+
                                 <asp:Button ID="txtSubmit" runat="server" Text="Submit" Height="1.7em" Width="6em" />
                                 <asp:Button ID="txtReset" runat="server" Text="Reset" Height="1.7em" Width="6em" />
                             </td>
@@ -130,6 +130,7 @@
                     </table>
                     <br />
                     <br />
+
                     <table width:75; cellspacing:0; cellpadding:0;>
                         <tr>
                             <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261">here </a>to view the schedule of fees, rates and charges.
@@ -178,6 +179,7 @@
                     </div>
                 </div>
             </asp:Panel>
+
     </div>
 </div>
     <br/><br/>
