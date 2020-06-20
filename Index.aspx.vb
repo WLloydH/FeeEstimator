@@ -13,7 +13,7 @@ Partial Class GovDeptsPlanningIndex
         AppSettings = System.Configuration.ConfigurationManager.AppSettings
     End Sub
 
-    Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
+    Protected Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Init
         Dim cmdCommon As New SqlCommand
         Dim drCommon As SqlDataReader = Nothing
 
@@ -59,14 +59,12 @@ Partial Class GovDeptsPlanningIndex
         Session("PermitType") = ddlPermitType.SelectedIndex.ToString()
         lblMessage.Text = Session("PermitType")
 
-
         lblMessage.Text = ""
         pnlResults.Visible = False
 
-        Dim ResCom As String
-        Dim TradeNumbers As Integer = 0
-        Dim OverTheCounter As Integer = 0
-
+        Dim resCom As String
+        Dim tradeNumbers As Integer = 0
+        Dim overTheCounter As Integer = 0
 
         If Not (IsNumeric(Trim(txtValue.Text))) Then
             lblMessage.Text = "Please enter a numeric job value"
@@ -90,37 +88,37 @@ Partial Class GovDeptsPlanningIndex
 
         Session("PermitValue") = Double.Parse(Replace(Trim(txtValue.Text), "$", ""))
 
-        If Commercial.Checked Then ResCom = "Commercial"
-        If Residential.Checked Then ResCom = "Residential"
+        If Commercial.Checked Then resCom = "Commercial"
+        If Residential.Checked Then resCom = "Residential"
 
         If ckbBuilding.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ckbElectric.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ckbRoof.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ckbMechanic.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ckbPlumbing.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ckbGas.Checked Then
-            TradeNumbers = TradeNumbers + 1
+            tradeNumbers = tradeNumbers + 1
         End If
 
         If ddlPermitType.SelectedValue.Substring(0, 16) <> "Over the Counter" Then
-            OverTheCounter = 0
+            overTheCounter = 0
         Else
-            OverTheCounter = 1
+            overTheCounter = 1
         End If
 
         Dim cmdCalculate As New SqlCommand
@@ -132,10 +130,10 @@ Partial Class GovDeptsPlanningIndex
                 .Connection.Open()
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "spCalculateFee"
-                .Parameters.Add("@ResCom", SqlDbType.VarChar).Value = ResCom
+                .Parameters.Add("@ResCom", SqlDbType.VarChar).Value = resCom
                 .Parameters.Add("@Value", SqlDbType.Int).Value = Session("PermitValue")
-                .Parameters.Add("@Trades", SqlDbType.Int).Value = TradeNumbers
-                .Parameters.Add("@OverTheCounter", SqlDbType.Int).Value = OverTheCounter
+                .Parameters.Add("@Trades", SqlDbType.Int).Value = tradeNumbers
+                .Parameters.Add("@OverTheCounter", SqlDbType.Int).Value = overTheCounter
                 drCalculate = .ExecuteReader(CommandBehavior.CloseConnection)
             End With
 
@@ -147,7 +145,7 @@ Partial Class GovDeptsPlanningIndex
                 Session("Total") = drCalculate.Item("Total")
 
 
-                If OverTheCounter = 0 Then
+                If overTheCounter = 0 Then
                     lblPlansFee.Text = "Review Fee: " & FormatCurrency(Session("PlansFee"))
                 Else
                     lblPlansFee.Text = ""
@@ -169,7 +167,7 @@ Partial Class GovDeptsPlanningIndex
     End Sub
 
 
-    Protected Sub txtReset_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtReset.Click
+    Protected Sub txtReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles txtReset.Click
         Clear()
     End Sub
 

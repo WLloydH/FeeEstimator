@@ -140,49 +140,80 @@ Partial Public Class GovDeptsPlanningIndex
     Protected WithEvents txtReset As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''pnlResults control.
+    '''lblExplainState control.
+
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+
+    Protected WithEvents lblExplainState As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblDisclaimer control.
+
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+
+    Protected WithEvents lblDisclaimer As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+
     Protected WithEvents pnlResults As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''lblEstimate control.
+
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+
     Protected WithEvents lblEstimate As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''lblPlansFee control.
+
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+
     Protected WithEvents lblPlansFee As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''lblPermitFee control.
+
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+
     Protected WithEvents lblPermitFee As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''lblTrades control.
+
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
+
     Protected WithEvents lblTrades As Global.System.Web.UI.WebControls.Label
+
 
     '''<summary>
     '''lblStateFee control.
@@ -201,22 +232,4 @@ Partial Public Class GovDeptsPlanningIndex
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblTotal As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblExplainState control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblExplainState As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblDisclaimer control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblDisclaimer As Global.System.Web.UI.WebControls.Label
 End Class
