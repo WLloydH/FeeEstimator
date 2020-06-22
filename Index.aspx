@@ -29,7 +29,7 @@
             <img src="ClearwaterLogo.png" alt="Clearwater Logo Click To Return to myClearwater.com" />
         </div>
         <div class="col-lg-5 col-md-6 text-center" >
-            <h1 align="center" style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
+            <h1 text-align: idcenter; style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
         </div>
     </div>
     <div class="row">
@@ -70,7 +70,7 @@
                             <tr>
                                 <td text-align: left;>Value Of Job:</td>
                                 <td text-align: left; colspan="2">
-                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em"></asp:TextBox>
+                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em" TextMode="Number"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -159,7 +159,7 @@
             </table>
         </div>
     </form>
-    <div class= "col-lg-4 col-md-6 col-sm-6" >
+    <div class= "col-lg-2 col-md-2 col-sm-3" >
             <br/>
             <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
                 <div class= "row" >
@@ -194,7 +194,7 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var d = new Date();
