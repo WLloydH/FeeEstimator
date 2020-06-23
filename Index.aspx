@@ -161,7 +161,7 @@
         <div class="col-lg-offset-2 col-lg-8">
         <table width:75; cellspacing:0; cellpadding:0;>
         <tr>
-            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261">here </a>to view the schedule of fees, rates and charges.
+            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.
 	                   
             </td>
         </tr>
