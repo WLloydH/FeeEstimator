@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -23,6 +23,15 @@
             text-align: start;
         }
     </style>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var d = new Date();
+            $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
+        });
+    </script>
+
 </head>
 <body style="background-color: #e9f6fb">
 <div class="container-fluid">
@@ -198,10 +207,3 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var d = new Date();
-        $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-    });
-</script>
