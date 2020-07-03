@@ -87,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClearwaterLogo.png" />
+    <Content Include="css\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="JavaScript\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
   </ItemGroup>
@@ -149,6 +151,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

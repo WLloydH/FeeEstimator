@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css"/>
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -23,14 +24,9 @@
             text-align: start;
         }
     </style>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var d = new Date();
-            $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-        });
-    </script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
 
 </head>
 <body style="background-color: #e9f6fb">
@@ -80,7 +76,7 @@
                             <tr>
                                 <td text-align: left; style="padding-right: 10px;">Value Of Job:</td>
                                 <td text-align: left; colspan="2">
-                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em" TextMode="Number"></asp:TextBox>
+                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em" CssClass="cbTextIndented"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -167,7 +163,7 @@
     </div>
 </div>
     <div class="row">
-        <div class="col-lg-offset-2 col-lg-8">
+        <div class="offset-2 col-lg-8"  >
         <table width:75; cellspacing:0; cellpadding:0;>
         <tr>
             <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.
@@ -205,5 +201,26 @@
             </a>
         </footer>
 </div>
+ 
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var d = new Date();
+        $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
+    });
+    $("#txtValue")
+        .focusout(function formatJobValue() {
+            var jobValObj = $("#txtValue");
+            var jobVal = jobValObj.val().trim();
+            if (isNaN(jobVal) || jobVal < 0) {
+                jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
+                window.toastr.infog("Please enter a dollar amount.");
+            } else {
+                jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(jobVal));
+            }
+            
+        });
+</script>
 </body>
 </html>
