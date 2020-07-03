@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link rel="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css"/>
+    <link rel="stylesheet" href="css/toastr.min.css"/>
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -26,7 +26,7 @@
     </style>
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
+    <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
 
 </head>
 <body style="background-color: #e9f6fb">
@@ -40,8 +40,7 @@
         </div>
     </div>
     <div class="row">
-  
-        <p>&nbsp;</p><p>&nbsp;</p>
+  <p>&nbsp;</p><p>&nbsp;</p>
         <div class="col-lg-2 col-md-0" ></div>
         <div class="col-lg-4 col-md-6" >
             <form id="form1" runat="server">
@@ -166,9 +165,7 @@
         <div class="offset-2 col-lg-8"  >
         <table width:75; cellspacing:0; cellpadding:0;>
         <tr>
-            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.
-	                   
-            </td>
+            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -194,12 +191,11 @@
     <br/><br/>
     <footer class="panel-footer text-center" style="font-size: .75em; font-weight: bolder; background-color: #cfeffd">
             Developed by the City of Clearwater Department of Information Technology
-
-            <br />
+        <br />
             <a href="#">
                 <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
             </a>
-        </footer>
+    </footer>
 </div>
  
 
@@ -215,12 +211,34 @@
             var jobVal = jobValObj.val().trim();
             if (isNaN(jobVal) || jobVal < 0) {
                 jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
-                window.toastr.infog("Please enter a dollar amount.");
+                toastr.clear();
+                toastr.options.positionClass = 'toast-top-full-width';
+                toastr.options.timeOut = 2500;
+                toastr.options.fadeOut = 250;
+                toastr.options.fadeIn = 250;
+                toastr["info"]("Please enter a valid dollar amount.");
             } else {
                 jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(jobVal));
             }
             
         });
+
+    $("#txtSubmit").onclick(function txtSubmitClick() {
+    
+        $("#form1").submit(function(event) {
+            $("txtSubmit")
+            if ($("#ddlPermitType option:selected").selectedIndex === 0 || $("#ddlPermitType option:selected").selectedIndex === undefined) {
+
+                toastr.clear();
+                toastr.options.positionClass = 'toast-top-full-width';
+                toastr.options.timeOut = 2500;
+                toastr.options.fadeOut = 250;
+                toastr.options.fadeIn = 250;
+                toastr["info"]("Please select a permit type.");
+                event.preventDefault();
+            }
+        });
+    });
 </script>
 </body>
 </html>
