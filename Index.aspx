@@ -19,10 +19,16 @@
         .cbTextIndented input {
             margin-right: 5px;
         }
-
-        #pnlResults span {
-            text-align: start;
+        @media only screen and (min-width:1200px) {
+            #pnlResults {
+                position: absolute;
+                top: 320px;
+                left: -200px;
+                text-align: start;
+            }
+            }
         }
+      
     </style>
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -138,27 +144,31 @@
                 </table>
             </form>
         </div>
-    
-    <div class= "col-lg-2 col-md-2 col-sm-3">
-            <br/>
-            <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
-                <div class= "row" >
-                <div class= "col-lg-2"></div>
-                    <div class= "col-lg-9 " style="bottom: 0;">
-                        <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
-                        <br />
-                        <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+   
+        <div class= "col-lg-2 col-md-2 col-sm-3">
+        <br/>
+            <div class= "col-lg-2 col-md-2 col-sm-3">
+                <br/>
+                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
+                    <div class= "row" >
+                        <!--div class= "col-lg-2"><div-->
+                        <div class= "col-lg-9 mx-auto">
+                            <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
+                            <br />
+                            <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
+                            <br />
+                            <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                            <br />
+                            <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                            <br />
+                            <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                            <br />
+                            <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                        </div>
                     </div>
-                </div>
-            </asp:Panel>
+                </asp:Panel>
+            </div>
+        </div>
     </div>
 </div>
     <div class="row">
@@ -196,7 +206,7 @@
                 <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
             </a>
     </footer>
-</div>
+
  
 
 
@@ -208,7 +218,8 @@
     $("#txtValue")
         .focusout(function formatJobValue() {
             var jobValObj = $("#txtValue");
-            var jobVal = jobValObj.val().trim();
+            var jobVal = jobValObj.val().trim().replace(',', '').replace('$', '');
+
             if (isNaN(jobVal) || jobVal < 0) {
                 jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
                 toastr.clear();
@@ -220,12 +231,12 @@
             } else {
                 jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(jobVal));
             }
-            
+
         });
 
-    $("#txtSubmit").onclick(function txtSubmitClick() {
-    
-        $("#form1").submit(function(event) {
+    $("#txtSubmit").click(function txtSubmitClick() {
+
+        $("#form1").submit(function (event) {
             $("txtSubmit")
             if ($("#ddlPermitType option:selected").selectedIndex === 0 || $("#ddlPermitType option:selected").selectedIndex === undefined) {
 
@@ -235,7 +246,7 @@
                 toastr.options.fadeOut = 250;
                 toastr.options.fadeIn = 250;
                 toastr["info"]("Please select a permit type.");
-                event.preventDefault();
+                event.stopPropagation()
             }
         });
     });

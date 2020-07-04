@@ -158,7 +158,6 @@ Partial Class GovDeptsPlanningIndex
 
             End If
 
-
         Catch ex As Exception
             lblMessage.Text &= "A system error has occurred. Please contact the helpdesk:<br> " + ex.Message
         End Try
