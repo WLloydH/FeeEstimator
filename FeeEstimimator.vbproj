@@ -89,6 +89,7 @@
     <Content Include="ClearwaterLogo.png" />
     <Content Include="css\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="JavaScript\custom.js" />
     <Content Include="JavaScript\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
@@ -167,6 +168,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>JavaScript\custom.js</ApplicationManifest>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

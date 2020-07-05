@@ -19,21 +19,24 @@
         .cbTextIndented input {
             margin-right: 5px;
         }
+
         @media only screen and (min-width:1200px) {
             #pnlResults {
                 position: absolute;
                 top: 320px;
                 left: -200px;
                 text-align: start;
+
             }
-            }
+
         }
+       
       
     </style>
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
-
+    <script  type="text/javascript" src="JavaScript/custom.js.js"></script>
 </head>
 <body style="background-color: #e9f6fb">
 <div class="container-fluid">
@@ -53,12 +56,6 @@
                 <table width:100%; cellspacing:0; cellpadding:0;>
                     <td text-align: center; width:50%;>
                         <table width: 55% cellspacing:0; cellpadding:0;>
-                            <tr>
-                                <td text-align: center colspan="3">
-                                    <h3 style="text-align: center;">
-                                        <asp:Label ID="lblMessage" runat="server"  Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>&nbsp;</h3>
-                                </td>
-                            </tr>
                             <tr>
                                 <td text-align: left;>Type Of Permit</td>
                                 <td colspan="2" text-align: left;>
@@ -210,46 +207,13 @@
  
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var d = new Date();
-        $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-    });
-    $("#txtValue")
-        .focusout(function formatJobValue() {
-            var jobValObj = $("#txtValue");
-            var jobVal = jobValObj.val().trim().replace(',', '').replace('$', '');
-
-            if (isNaN(jobVal) || jobVal < 0) {
-                jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
-                toastr.clear();
-                toastr.options.positionClass = 'toast-top-full-width';
-                toastr.options.timeOut = 2500;
-                toastr.options.fadeOut = 250;
-                toastr.options.fadeIn = 250;
-                toastr["info"]("Please enter a valid dollar amount.");
-            } else {
-                jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(jobVal));
-            }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var d = new Date();
+            $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
+            setToastrGlobalOption();
 
         });
-
-    $("#txtSubmit").click(function txtSubmitClick() {
-
-        $("#form1").submit(function (event) {
-            $("txtSubmit")
-            if ($("#ddlPermitType option:selected").selectedIndex === 0 || $("#ddlPermitType option:selected").selectedIndex === undefined) {
-
-                toastr.clear();
-                toastr.options.positionClass = 'toast-top-full-width';
-                toastr.options.timeOut = 2500;
-                toastr.options.fadeOut = 250;
-                toastr.options.fadeIn = 250;
-                toastr["info"]("Please select a permit type.");
-                event.stopPropagation()
-            }
-        });
-    });
-</script>
+    </script>
 </body>
 </html>

@@ -37,8 +37,7 @@ Partial Class GovDeptsPlanningIndex
                 .DataBind()
             End With
         Catch err As Exception
-            lblMessage.Text = "Error retrieving domains - Contact IT Help Desk<br>" &
-             "Details: " & err.Message
+
         Finally
             If Not IsNothing(drCommon) Then
                 If Not drCommon.IsClosed Then drCommon.Close()
@@ -54,64 +53,60 @@ Partial Class GovDeptsPlanningIndex
     End Sub
 
     Protected Sub txtSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSubmit.Click
-
-        Session("PermitType") = ddlPermitType.SelectedIndex.ToString()
-        lblMessage.Text = Session("PermitType")
-
-        lblMessage.Text = ""
-        pnlResults.Visible = False
-
         Dim resCom As String
         Dim tradeNumbers As Integer = 0
         Dim overTheCounter As Integer = 0
 
+        Session("PermitType") = ddlPermitType.SelectedIndex.ToString()
+        pnlResults.Visible = False
+
+        If String.IsNullOrEmpty(txtValue.Text) Then
+            Exit Sub
+        End If
+
+
         If Not (IsNumeric(Trim(txtValue.Text))) Then
-            lblMessage.Text = "Please enter a numeric job value"
             Exit Sub
         End If
 
         If ddlPermitType.SelectedIndex = 0 Then
-            lblMessage.Text = "Please enter a valid permit type"
             Exit Sub
         End If
 
         If Trim(txtValue.Text) = "" Then
-            lblMessage.Text = "Please enter a valid permit value"
             Exit Sub
         End If
 
         If Not (Commercial.Checked) And Not (Residential.Checked) Then
-            lblMessage.Text = "Please select commercial or residential property"
             Exit Sub
         End If
-
         Session("PermitValue") = Double.Parse(Replace(Trim(txtValue.Text), "$", ""))
 
         If Commercial.Checked Then resCom = "Commercial"
         If Residential.Checked Then resCom = "Residential"
 
         If ckbBuilding.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ckbElectric.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ckbRoof.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ckbMechanic.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ckbPlumbing.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ckbGas.Checked Then
-            tradeNumbers = tradeNumbers + 1
+            TradeNumbers = TradeNumbers + 1
         End If
 
         If ddlPermitType.SelectedValue.Substring(0, 16) <> "Over the Counter" Then
@@ -131,7 +126,7 @@ Partial Class GovDeptsPlanningIndex
                 .CommandText = "spCalculateFee"
                 .Parameters.Add("@ResCom", SqlDbType.VarChar).Value = resCom
                 .Parameters.Add("@Value", SqlDbType.Int).Value = Session("PermitValue")
-                .Parameters.Add("@Trades", SqlDbType.Int).Value = tradeNumbers
+                .Parameters.Add("@Trades", SqlDbType.Int).Value = TradeNumbers
                 .Parameters.Add("@OverTheCounter", SqlDbType.Int).Value = overTheCounter
                 drCalculate = .ExecuteReader(CommandBehavior.CloseConnection)
             End With
@@ -159,7 +154,6 @@ Partial Class GovDeptsPlanningIndex
             End If
 
         Catch ex As Exception
-            lblMessage.Text &= "A system error has occurred. Please contact the helpdesk:<br> " + ex.Message
         End Try
 
 
@@ -179,7 +173,6 @@ Partial Class GovDeptsPlanningIndex
         Session("PermitFee") = ""
         Session("Surcharge") = ""
         Session("PermitValue") = 0
-        lblMessage.Text = ""
         TradeNumbers = 0
         ckbBuilding.Checked = False
         ckbElectric.Checked = False
