@@ -5,9 +5,9 @@
     <title>Fee Estimator</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/toastr.min.css"/>
+    <link href="favicon.ico" rel="shortcut icon" type="image/ico" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/toastr.min.css" rel="stylesheet" />
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -33,10 +33,11 @@
        
       
     </style>
+
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
-    <script  type="text/javascript" src="JavaScript/custom.js.js"></script>
+    <script  type="text/javascript" src="JavaScript/custom.js"></script>
 </head>
 <body style="background-color: #e9f6fb">
 <div class="container-fluid">
@@ -130,7 +131,7 @@
                         </tr>
                         <tr>
                             <td colspan="1" style="height: 10px; text-align: left;">
-                                <asp:Button ID="txtSubmit" runat="server" Text="Submit" Height="1.7em" Width="6em" />
+                                <asp:Button ID="txtSubmit" runat="server" Text="Submit"  OnClientClick="return myClearwater.valid();"  Height="1.7em" Width="6em" />
                                 <asp:Button ID="txtReset" runat="server" Text="Reset" Height="1.7em" Width="6em" />
                             </td>
                         </tr>
@@ -205,15 +206,6 @@
     </footer>
 
  
-
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var d = new Date();
-            $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-            setToastrGlobalOption();
-
-        });
-    </script>
+ 
 </body>
 </html>
