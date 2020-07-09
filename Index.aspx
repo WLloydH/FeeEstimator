@@ -23,7 +23,7 @@
         @media only screen and (min-width:1200px) {
             #pnlResults {
                 position: absolute;
-                top: 320px;
+                top: 150px;
                 left: -200px;
                 text-align: start;
 
