@@ -16,6 +16,48 @@ myClearwater.valid = function () {
     return;
 })();
 
+function formatFees() {
+
+    const menuItem = (label, cost) => cost.padStart(40 - label.length, ".");
+   
+
+    const plansFee = $("#lblPlansFee");
+    const plansFeeText = plansFee.text().split(":");
+    if (plansFeeText.length > 1) {
+         $('<div>' + menuItem(plansFeeText[0],plansFeeText[1]) + '</div>').insertAfter(plansFee);
+
+
+        const permitFee = $("#lblPermitFee");
+        const permitFeeText = permitFee.text().split(":");
+        if (permitFeeText.length > 1) {
+             $('<div>' + menuItem(permitFeeText[0], permitFeeText[1]) + '</div>').insertAfter(permitFee);
+            permitFee.remove();
+        }
+
+
+        const trades = $("#lblTrades");
+        const tradesText = trades.text().split(":");
+        if (tradesText.length > 1) {
+             $('<div">' + menuItem(tradesText[0], tradesText[1]) + '</block>').insertAfter(trades);
+            trades.remove();
+        }
+
+        const stateFee = $("#lblStateFee");
+        const stateFeeText = stateFee.text().split(":");
+        if (stateFeeText.length > 1) {
+             $('<div">' + menuItem(stateFeeText[1]) + '</div>').insertAfter(stateFee);
+            stateFee.remove();
+        }
+
+        const total = $("#lblTotal");
+        const totalText = total.text().split(":");
+        if (totalText.length > 1) {
+            $('<div">' + menuItem(stateFeeText[1]) + '</div>').insertAfter(total);
+            total.remove();
+        }
+
+    }
+}
 
 
 $("#txtSubmit").click(function () {
@@ -56,8 +98,9 @@ myClearwater.checkValues = function(){
 
 
 
-$(document).ready(function() {
+$(window).ready(function() {
     var d = new Date();
     $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
+    formatFees();
 
 });

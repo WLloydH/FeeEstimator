@@ -31,6 +31,10 @@
 
         }
        
+        #pnlResults {
+            font-family: monospace;
+
+        }
       
     </style>
 
@@ -53,7 +57,7 @@
   <p>&nbsp;</p><p>&nbsp;</p>
         <div class="col-lg-2 col-md-0" ></div>
         <div class="col-lg-4 col-md-6" >
-            <form id="form1" runat="server">
+            <form id="feeEstimatorForm" runat="server">
                 <table width:100%; cellspacing:0; cellpadding:0;>
                     <td text-align: center; width:50%;>
                         <table width: 55% cellspacing:0; cellpadding:0;>
@@ -147,7 +151,7 @@
         <br/>
             <div class= "col-lg-2 col-md-2 col-sm-3">
                 <br/>
-                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
+                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" >
                     <div class= "row" >
                         <!--div class= "col-lg-2"><div-->
                         <div class= "col-lg-9 mx-auto">
@@ -161,7 +165,7 @@
                             <br />
                             <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
                             <br />
-                            <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                            <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="small"></asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -204,8 +208,5 @@
                 <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
             </a>
     </footer>
-
- 
- 
 </body>
 </html>

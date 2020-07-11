@@ -14,13 +14,13 @@ Option Explicit On
 Partial Public Class GovDeptsPlanningIndex
 
     '''<summary>
-    '''form1 control.
+    '''feeEstimatorForm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents feeEstimatorForm As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
     '''ddlPermitType control.

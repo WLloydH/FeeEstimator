@@ -146,10 +146,10 @@ Partial Class GovDeptsPlanningIndex
                 End If
                 pnlResults.Visible = True
                 lblEstimate.Text = "Estimated Fees"
-                lblPermitFee.Text = "Permit Fee : " & FormatCurrency(Session("PermitFee"))
-                lblStateFee.Text = "State Fee :  " & FormatCurrency(Session("StateFee"))
-                lblTrades.Text = "Trades Fee : " & FormatCurrency(Session("Trades"))
-                lblTotal.Text = "Total :   " & FormatCurrency(Session("Total"))
+                lblPermitFee.Text = "Permit Fee: " & FormatCurrency(Session("PermitFee"))
+                lblStateFee.Text = "State Fee:  " & FormatCurrency(Session("StateFee"))
+                lblTrades.Text = "Trades Fee: " & FormatCurrency(Session("Trades"))
+                lblTotal.Text = "Total:   " & FormatCurrency(Session("Total"))
 
             End If
 
