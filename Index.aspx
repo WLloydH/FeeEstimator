@@ -26,14 +26,23 @@
                 top: 150px;
                 left: -200px;
                 text-align: start;
-
+                padding-left: 2px;
             }
 
         }
        
         #pnlResults {
             font-family: monospace;
-
+        }
+        
+        #lblEstimateTitle {
+            margin: 0 auto;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .fees {
+            white-space: pre;
+            padding: 0;
         }
       
     </style>
@@ -151,21 +160,15 @@
         <br/>
             <div class= "col-lg-2 col-md-2 col-sm-3">
                 <br/>
-                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" >
+                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" CssClass="pnlResult" >
                     <div class= "row" >
-                        <!--div class= "col-lg-2"><div-->
-                        <div class= "col-lg-9 mx-auto">
+                         <div class= "col-lg-9 mx-auto">
                             <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
-                            <br />
-                            <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="small"></asp:Label>
+                             <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
+                             <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="small"></asp:Label>
                         </div>
                     </div>
                 </asp:Panel>

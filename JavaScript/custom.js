@@ -9,54 +9,59 @@ myClearwater.valid = function () {
 
 
 (myClearwater.setToastrGlobalOption = function() {
-    toastr.options.positionClass = 'toast-top-right';
-    toastr.options.fadeOut = 3000;
-     toastr.options.fadeIn = 5000;
-    toastr.options.preventDuplicates = true;
+    window.toastr.options.positionClass = 'toast-top-right';
+    window.toastr.options.fadeOut = 3000;
+    window.toastr.options.fadeIn = 5000;
+    window.toastr.options.preventDuplicates = true;
     return;
 })();
 
 function formatFees() {
 
-    const menuItem = (label, cost) => cost.padStart(40 - label.length, ".");
-   
+    const menuItem = (label, cost) => {
+        return label + ':'.concat(cost.padStart(25- label.length, " "));
+    }
 
-    const plansFee = $("#lblPlansFee");
+
+    window.$('<div id="lblEstimateTitle">Fee Estimates</div>').insertAfter('#lblEstimate');
+    window.$('#lblEstimate').remove();
+
+    const plansFee = window.$("#lblPlansFee");
     const plansFeeText = plansFee.text().split(":");
     if (plansFeeText.length > 1) {
-         $('<div>' + menuItem(plansFeeText[0],plansFeeText[1]) + '</div>').insertAfter(plansFee);
-
-
-        const permitFee = $("#lblPermitFee");
-        const permitFeeText = permitFee.text().split(":");
-        if (permitFeeText.length > 1) {
-             $('<div>' + menuItem(permitFeeText[0], permitFeeText[1]) + '</div>').insertAfter(permitFee);
-            permitFee.remove();
-        }
-
-
-        const trades = $("#lblTrades");
-        const tradesText = trades.text().split(":");
-        if (tradesText.length > 1) {
-             $('<div">' + menuItem(tradesText[0], tradesText[1]) + '</block>').insertAfter(trades);
-            trades.remove();
-        }
-
-        const stateFee = $("#lblStateFee");
-        const stateFeeText = stateFee.text().split(":");
-        if (stateFeeText.length > 1) {
-             $('<div">' + menuItem(stateFeeText[1]) + '</div>').insertAfter(stateFee);
-            stateFee.remove();
-        }
-
-        const total = $("#lblTotal");
-        const totalText = total.text().split(":");
-        if (totalText.length > 1) {
-            $('<div">' + menuItem(stateFeeText[1]) + '</div>').insertAfter(total);
-            total.remove();
-        }
-
+        window.$('<div class="fees">' + menuItem(plansFeeText[0], plansFeeText[1]) + '</div>').insertAfter(plansFee);
+        plansFee.remove();
     }
+
+    const permitFee = window.$("#lblPermitFee");
+    const permitFeeText = permitFee.text().split(":");
+    if (permitFeeText.length > 1) {
+        window.$('<div class="fees">' + menuItem(permitFeeText[0], permitFeeText[1]) + '</div>').insertAfter(permitFee);
+        permitFee.remove();
+    }
+
+
+    const trades = window.$("#lblTrades");
+    const tradesText = trades.text().split(":");
+    if (tradesText.length > 1) {
+        window.$('<div class="fees">' + menuItem(tradesText[0], tradesText[1]) + '</div>').insertAfter(trades);
+        trades.remove();
+    }
+
+    const stateFee = window.$("#lblStateFee");
+    const stateFeeText = stateFee.text().split(":");
+    if (stateFeeText.length > 1) {
+        window.$('<div class="fees">' + menuItem(stateFeeText[0], stateFeeText[1]) + '</div>').insertAfter(stateFee);
+        stateFee.remove();
+    }
+
+    const total = window.$("#lblTotal");
+    const totalText = total.text().split(":");
+    if (totalText.length > 1) {
+        window.$('<div class="fees">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
+        total.remove();
+    }
+
 }
 
 
@@ -67,7 +72,7 @@ $("#txtSubmit").click(function () {
 
 
 $("#txtValue").focusout(function formatJobValue() {
-    var jobValObj = $("#txtValue");
+    var jobValObj = window.$("#txtValue");
     var jobVal = jobValObj.val().trim().replace(',', '').replace('$', '');
 
     if (isNaN(jobVal) || jobVal < 0 || jobVal === '') {
@@ -85,13 +90,13 @@ myClearwater.checkValues = function(){
     var jobVal = jobValObj.val().trim().replace(',', '').replace('$', '');
     myClearwater.valid = true;
     if ($("#ddlPermitType option:selected").text().indexOf("Select") !== -1) {
-        toastr["info"]("Please select a permit type.");
+        window.toastr["info"]("Please select a permit type.");
         myClearwater.SubmitValid = false;
     }
 
     if (isNaN(jobVal) || jobVal === 0 || jobVal.length === 0) {
         jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
-        toastr["info"]("Please enter a dollar amount.");
+        window.toastr["info"]("Please enter a dollar amount.");
         myClearwater.SubmitValid = false;
     }
 }
