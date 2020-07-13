@@ -3,8 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Fee Estimator</title>
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link href="favicon.ico" rel="shortcut icon" type="image/ico" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/toastr.min.css" rel="stylesheet" />
     <style>
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -17,10 +20,37 @@
             margin-right: 5px;
         }
 
-        #pnlResults span {
-            text-align: start;
+        @media only screen and (min-width:1200px) {
+            #pnlResults {
+                position: absolute;
+                top: 150px;
+                left: -200px;
+                text-align: start;
+                padding-left: 2px;
+            }
+
         }
+       
+        #pnlResults {
+            font-family: monospace;
+        }
+        
+        #lblEstimateTitle {
+            margin: 0 auto;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .fees {
+            white-space: pre;
+            padding: 0;
+        }
+      
     </style>
+
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
+    <script  type="text/javascript" src="JavaScript/custom.js"></script>
 </head>
 <body style="background-color: #e9f6fb">
 <div class="container-fluid">
@@ -33,33 +63,25 @@
         </div>
     </div>
     <div class="row">
-    <form id="form1" runat="server">
-        <p>&nbsp;</p><p>&nbsp;</p>
+  <p>&nbsp;</p><p>&nbsp;</p>
         <div class="col-lg-2 col-md-0" ></div>
-        <div class="col-lg-7 col-md-6" >
+        <div class="col-lg-4 col-md-6" >
+            <form id="feeEstimatorForm" runat="server">
                 <table width:100%; cellspacing:0; cellpadding:0;>
                     <td text-align: center; width:50%;>
                         <table width: 55% cellspacing:0; cellpadding:0;>
-                            <tr>
-                                <td text-align: center colspan="3">
-                                    <h3 style="text-align: center;">
-                                        <asp:Label ID="lblMessage" runat="server"  Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>&nbsp;</h3>
-                                </td>
-                            </tr>
                             <tr>
                                 <td text-align: left;>Type Of Permit</td>
                                 <td colspan="2" text-align: left;>
                                     <asp:DropDownList ID="ddlPermitType" runat="server"></asp:DropDownList>
                                 </td>
                             </tr>
+                            <tr><td>&nbsp;</td></tr>
                             <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td text-align: left;>Type Of Property:</td>
-                                <td text-align: left;>
+                                <td text-align: left; style="padding-right: 10px;">Type Of Property:</td>
+                                <td text-align: left; style="padding-right: 10px;">
                                     <asp:RadioButton ID="Residential" runat="server" GroupName="ConstructionType" />
-                                    <span style="margin-right: 10px;">Residential</span>
+                                    <span style=" margin-right: 10px;">Residential</span>
                                     <asp:RadioButton ID="Commercial" runat="server" GroupName="ConstructionType" />
                                     Commercial
                                 </td>
@@ -68,16 +90,16 @@
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td text-align: left;>Value Of Job:</td>
+                                <td text-align: left; style="padding-right: 10px;">Value Of Job:</td>
                                 <td text-align: left; colspan="2">
-                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em" TextMode="Number"></asp:TextBox>
+                                    <asp:TextBox ID="txtValue" runat="server" Width="16.5em" Height="1.5em" CssClass="cbTextIndented"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td text-align: left;>Trades Included:</td>
+                                <td text-align: left; style="padding-right: 10px;">Trades Included:</td>
                                 <td text-align: left; colspan="2">
                                     <asp:CheckBox ID="ckbBuilding" CssClass="cbTextIndented" Text="Building" runat="server" />
                                 </td>
@@ -122,82 +144,72 @@
                         </tr>
                         <tr>
                             <td colspan="1" style="height: 10px; text-align: left;">
-
-                                <asp:Button ID="txtSubmit" runat="server" Text="Submit" Height="1.7em" Width="6em" />
+                                <asp:Button ID="txtSubmit" runat="server" Text="Submit"  OnClientClick="return myClearwater.valid();"  Height="1.7em" Width="6em" />
                                 <asp:Button ID="txtReset" runat="server" Text="Reset" Height="1.7em" Width="6em" />
                             </td>
                         </tr>
                     </table>
                     <br />
                     <br />
-
-                    <table width:75; cellspacing:0; cellpadding:0;>
-                        <tr>
-                            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261">here </a>to view the schedule of fees, rates and charges.
-	                   
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td text-align: left;>
-                                <asp:Label ID="lblExplainState" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblDisclaimer"  runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
                     </td>
-            </table>
+                </table>
+            </form>
         </div>
-    </form>
-    <div class= "col-lg-2 col-md-2 col-sm-3" >
-            <br/>
-            <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="2px" BorderStyle="Ridge" Width="200px" >
-                <div class= "row" >
-                <div class= "col-lg-2"></div>
-                    <div class= "col-lg-9 ">
-                        <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
-                        <br />
-                        <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+   
+        <div class= "col-lg-2 col-md-2 col-sm-3">
+        <br/>
+            <div class= "col-lg-2 col-md-2 col-sm-3">
+                <br/>
+                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" CssClass="pnlResult" >
+                    <div class= "row" >
+                         <div class= "col-lg-9 mx-auto">
+                            <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
+                             <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
+                             <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
+                             <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="small"></asp:Label>
+                        </div>
                     </div>
-                </div>
-            </asp:Panel>
-
+                </asp:Panel>
+            </div>
+        </div>
     </div>
 </div>
+    <div class="row">
+        <div class="offset-2 col-lg-8"  >
+        <table width:75; cellspacing:0; cellpadding:0;>
+        <tr>
+            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td text-align: left;>
+                <asp:Label ID="lblExplainState" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="lblDisclaimer"  runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
+            </td>
+        </tr>
+    </table>
+ 
+        </div>
+    </div>
     <br/><br/>
     <footer class="panel-footer text-center" style="font-size: .75em; font-weight: bolder; background-color: #cfeffd">
             Developed by the City of Clearwater Department of Information Technology
-
-            <br />
+        <br />
             <a href="#">
                 <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
             </a>
-        </footer>
-</div>
+    </footer>
 </body>
 </html>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.12.3.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var d = new Date();
-        $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-    });
-</script>
