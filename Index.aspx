@@ -9,6 +9,65 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/toastr.min.css" rel="stylesheet" />
     <style>
+     
+
+        @media only screen and (min-width:1200px) {
+            #pnlResults {
+                position: absolute;
+                top: 150px;
+                left: -200px;
+                text-align: start;
+                padding-left: 2px;
+                font-family: monospace;
+                background: #75c4e7;
+            }
+
+        }
+     
+        #tblDisclamer {
+            color: #2f8dbd;
+            font-weight: bold;
+        }
+
+        #lblTotal {
+            font-weight: bolder;
+        }
+
+        #lblStateFee {
+            text-decoration: underline;
+        }
+          
+        #pnlResults {
+            font-family: monospace;
+            background: #75c4e7;
+        }
+        
+        #feeEstimatorHeading { 
+            color: #2f8dbd;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-size: 3.25em;
+            height: 100%;
+        }
+           
+        
+        #lblEstimateTitle {
+            margin: 0 auto;
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+        .fees {
+            white-space: pre;
+            padding: 0;
+        }
+
+
+        #lblStateFee {
+            margin: 0 auto;
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-style: normal;
@@ -20,32 +79,16 @@
             margin-right: 5px;
         }
 
-        @media only screen and (min-width:1200px) {
-            #pnlResults {
-                position: absolute;
-                top: 150px;
-                left: -200px;
-                text-align: start;
-                padding-left: 2px;
-            }
+        a {
+            font-weight: bolder;
+            text-decoration: none;
+            border-bottom: 1px solid #2f8dbd;
+        }
 
-        }
-       
-        #pnlResults {
-            font-family: monospace;
-        }
-        
-        #lblEstimateTitle {
-            margin: 0 auto;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .fees {
-            white-space: pre;
-            padding: 0;
-        }
       
     </style>
+    
+
 
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -58,8 +101,8 @@
         <div class="col-lg-3 col-md-4" >
             <img src="ClearwaterLogo.png" alt="Clearwater Logo Click To Return to myClearwater.com" />
         </div>
-        <div class="col-lg-5 col-md-6 text-center" >
-            <h1 text-align: idcenter; style="color: #18bde4; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Fee Estimator</h1>
+        <div class="col-lg-5 col-md-6 text-center align-middle" >
+            <div id="feeEstimatorHeading">Fee Estimator</div>
         </div>
     </div>
     <div class="row">
@@ -160,15 +203,15 @@
         <br/>
             <div class= "col-lg-2 col-md-2 col-sm-3">
                 <br/>
-                <asp:Panel ID= "pnlResults" runat="server" BackColor="#cfeffd"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" CssClass="pnlResult" >
+                <asp:Panel ID= "pnlResults" runat="server"  BorderWidth="4px" BorderStyle="Ridge" Width="275px"  >
                     <div class= "row" >
                          <div class= "col-lg-9 mx-auto">
-                            <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  Font-Bold="True" Font-Size="Medium" BorderWidth="0px"></asp:Label>
-                             <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server" Font-Bold="True" Font-Size="Small"> </asp:Label>
-                             <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                             <asp:Label ID="lblTrades" alt="Trades" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                             <asp:Label ID="lblStateFee" alt="State Fee" runat="server" Font-Bold="True" Font-Size="Small"></asp:Label>
-                             <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server" Font-Bold="True" Font-Size="small"></asp:Label>
+                            <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  ></asp:Label>
+                             <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server"> </asp:Label>
+                             <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" ></asp:Label>
+                             <asp:Label ID="lblTrades" alt="Trades" runat="server" ></asp:Label>
+                             <asp:Label ID="lblStateFee" alt="State Fee" runat="server" ></asp:Label>
+                             <asp:Label ID="lblTotal" alt="Fee Grand Total" runat="server"  ></asp:Label>
                         </div>
                     </div>
                 </asp:Panel>
@@ -177,39 +220,39 @@
     </div>
 </div>
     <div class="row">
-        <div class="offset-2 col-lg-8"  >
-        <table width:75; cellspacing:0; cellpadding:0;>
-        <tr>
-            <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td text-align: left;>
-                <asp:Label ID="lblExplainState" runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-            </td>
-        </tr>
+        <div class="offset-2"   ></div>
+        <div class="col-lg-8 col-md-12" >
+            <table ID="tblDisclamer"; width:75; cellspacing:0; cellpadding:0;>
+            <tr>
+                <td text-align: center>Click <a href="http://www.myclearwater.com/home/showdocument?id=2261" target="_blank">here </a>to view the schedule of fees, rates and charges.</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td text-align: left;>
+                    <asp:Label ID="lblExplainState" runat="server" Font-Bold="True" Font-Size="Small" ></asp:Label>
+                </td>
+            </tr>
 
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="lblDisclaimer"  runat="server" Font-Bold="True" Font-Size="Small" ForeColor="#3785c1"></asp:Label>
-            </td>
-        </tr>
-    </table>
- 
-        </div>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="lblDisclaimer"  runat="server" Font-Bold="True" Font-Size="Small"  ForeColor="#2f8dbd"></asp:Label>
+                </td>
+            </tr>
+        </table>
     </div>
-    <br/><br/>
+        <br/><br/>
+    </div>
     <footer class="panel-footer text-center" style="font-size: .75em; font-weight: bolder; background-color: #cfeffd">
-            Developed by the City of Clearwater Department of Information Technology
+        Developed by the City of Clearwater Department of Information Technology
         <br />
-            <a href="#">
-                <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
-            </a>
+        <a href="#">
+            <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
+        </a>
     </footer>
 </body>
 </html>
