@@ -39,7 +39,7 @@
           
         #pnlResults {
             font-family: monospace;
-            background: #75c4e7;
+            background: #cfeffd;
         }
         
         #feeEstimatorHeading { 
@@ -56,17 +56,7 @@
             font-weight: bolder;
             text-decoration: underline;
         }
-        .fees {
-            white-space: pre;
-            padding: 0;
-        }
-
-
-        #lblStateFee {
-            margin: 0 auto;
-            font-weight: bolder;
-            text-decoration: underline;
-        }
+      
 
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -79,11 +69,25 @@
             margin-right: 5px;
         }
 
+        .fees {
+            white-space: pre;
+            padding: 3px;
+        }
+
+        .fees.feesUnderline {
+            text-decoration: underline;
+            }
+       
+        .fees.feesBoldTotal {
+            font-weight: bolder;
+
+        }
         a {
             font-weight: bolder;
             text-decoration: none;
             border-bottom: 1px solid #2f8dbd;
         }
+
 
       
     </style>

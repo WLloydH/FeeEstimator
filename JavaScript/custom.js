@@ -58,14 +58,14 @@ myClearwater.formatFees = function() {
     const stateFee = window.$("#lblStateFee");
     const stateFeeText = stateFee.text().split(":");
     if (stateFeeText.length > 1) {
-        window.$('<div class="fees">' + menuItem(stateFeeText[0], stateFeeText[1]) + '</div>').insertAfter(stateFee);
+        window.$('<div class="fees feesUnderline">' + menuItem(stateFeeText[0], stateFeeText[1]) + '</div>').insertAfter(stateFee);
         stateFee.remove();
     }
 
     const total = window.$("#lblTotal");
     const totalText = total.text().split(":");
     if (totalText.length > 1) {
-        window.$('<div class="fees">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
+        window.$('<div class="fees feesBoldTotal">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
         total.remove();
     }
 
