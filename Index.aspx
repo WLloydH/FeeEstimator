@@ -9,9 +9,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/toastr.min.css" rel="stylesheet" />
     <style>
-     
 
-        @media only screen and (min-width:1200px) {
+        @media only screen and (min-width: 1200px) {
             #pnlResults {
                 position: absolute;
                 top: 150px;
@@ -21,9 +20,8 @@
                 font-family: monospace;
                 background: #75c4e7;
             }
-
         }
-     
+
         #tblDisclamer {
             color: #2f8dbd;
             font-weight: bold;
@@ -36,27 +34,27 @@
         #lblStateFee {
             text-decoration: underline;
         }
-          
+
         #pnlResults {
             font-family: monospace;
             background: #cfeffd;
         }
-        
-        #feeEstimatorHeading { 
+
+        #feeEstimatorHeading {
             color: #2f8dbd;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             font-style: normal;
             font-size: 3.25em;
             height: 100%;
         }
-           
-        
+
+
         #lblEstimateTitle {
             margin: 0 auto;
             font-weight: bolder;
             text-decoration: underline;
         }
-      
+
 
         .cbTextIndented label {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -76,8 +74,8 @@
 
         .fees.feesUnderline {
             text-decoration: underline;
-            }
-       
+        }
+
         .fees.feesBoldTotal {
             font-weight: bolder;
 
@@ -87,13 +85,8 @@
             text-decoration: none;
             border-bottom: 1px solid #2f8dbd;
         }
-
-
-      
     </style>
     
-
-
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
@@ -207,9 +200,9 @@
         <br/>
             <div class= "col-lg-2 col-md-2 col-sm-3">
                 <br/>
-                <asp:Panel ID= "pnlResults" runat="server"  BorderWidth="4px" BorderStyle="Ridge" Width="275px"  >
+                <asp:Panel ID= "pnlResults" runat="server"  BorderWidth="4px" BorderStyle="Ridge" Width="275px" BorderColor="Silver"  >
                     <div class= "row" >
-                         <div class= "col-lg-9 mx-auto">
+                         <div class= "col-lg-9">
                             <asp:Label ID="lblEstimate" alt="Fee Estimates" runat="server"  ></asp:Label>
                              <asp:Label ID="lblPlansFee" alt="Plans Fee" runat="server"> </asp:Label>
                              <asp:Label ID="lblPermitFee" alt="Permit Fee" runat="server" ></asp:Label>
