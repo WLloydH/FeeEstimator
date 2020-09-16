@@ -4,6 +4,7 @@ myClearwater.SubmitValid = true;
 
 myClearwater.valid = function () {
     myClearwater.checkValues();
+
     if (myClearwater.submit) {
         toastr.clear();
     }
@@ -15,8 +16,6 @@ $(window).ready(function () {
     $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
     myClearwater.formatFees();
 });
-
-
 
 (myClearwater.setToastrGlobalOption = function() {
     window.toastr.options.positionClass = 'toast-top-right';
@@ -70,7 +69,6 @@ myClearwater.formatFees = function() {
         window.$('<div class="fees feesBoldTotal">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
         total.remove();
     }
-
 }
 
 
@@ -114,5 +112,10 @@ myClearwater.checkValues = function(){
     }
 }
 
+$(window).ready(function() {
+    var d = new Date();
+    $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
+    formatFees();
 
+});
 

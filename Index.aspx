@@ -84,8 +84,14 @@
             text-decoration: none;
             border-bottom: 1px solid #2f8dbd;
         }
+        .fees {
+            white-space: pre;
+            padding: 0;
+        }
+      
     </style>
-    
+
+
     <script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script  type="text/javascript" src="JavaScript/toastr.min.js"></script>
@@ -216,6 +222,7 @@
     </div>
 </div>
     <div class="row">
+
         <div class="offset-2"   ></div>
         <div class="col-lg-8 col-md-12" >
             <table ID="tblDisclamer"; width:75; cellspacing:0; cellpadding:0;>
@@ -249,6 +256,7 @@
         <a href="#">
             <span id="Copyright" class="glyphicon glyphicon-copyright-mark"></span>
         </a>
+
     </footer>
 </body>
 </html>
