@@ -48,7 +48,6 @@
             height: 100%;
         }
 
-
         #lblEstimateTitle {
             margin: 0 auto;
             font-weight: bolder;
