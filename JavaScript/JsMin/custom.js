@@ -4,10 +4,6 @@ myClearwater.SubmitValid = true;
 
 myClearwater.valid = function () {
     myClearwater.checkValues();
-
-    if (myClearwater.submit) {
-        toastr.clear();
-    }
     return myClearwater.SubmitValid;
 };
 
@@ -17,19 +13,22 @@ $(window).ready(function () {
     myClearwater.formatFees();
 });
 
+
+
 (myClearwater.setToastrGlobalOption = function() {
     window.toastr.options.positionClass = 'toast-top-right';
     window.toastr.options.fadeOut = 3000;
-    window.toastr.options.fadeIn = 15000;
+    window.toastr.options.fadeIn = 5000;
     window.toastr.options.preventDuplicates = true;
     return;
 })();
 
 myClearwater.formatFees = function() {
 
-    function menuItem(label, cost) {
-        return label + ':'.concat(cost.padStart(25 - label.length, " "));
+    const menuItem = (label, cost) => {
+        return label + ':'.concat(cost.padStart(25- label.length, " "));
     }
+
 
     window.$('<div id="lblEstimateTitle">Fee Estimates</div>').insertAfter('#lblEstimate');
     window.$('#lblEstimate').remove();
@@ -59,16 +58,17 @@ myClearwater.formatFees = function() {
     const stateFee = window.$("#lblStateFee");
     const stateFeeText = stateFee.text().split(":");
     if (stateFeeText.length > 1) {
-        window.$('<div class="fees feesUnderline">' + menuItem(stateFeeText[0], stateFeeText[1]) + '</div>').insertAfter(stateFee);
+        window.$('<div class="fees">' + menuItem(stateFeeText[0], stateFeeText[1]) + '</div>').insertAfter(stateFee);
         stateFee.remove();
     }
 
     const total = window.$("#lblTotal");
     const totalText = total.text().split(":");
     if (totalText.length > 1) {
-        window.$('<div class="fees feesBoldTotal">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
+        window.$('<div class="fees">' + menuItem(totalText[0], totalText[1]) + '</div>').insertAfter(total);
         total.remove();
     }
+
 }
 
 
@@ -83,6 +83,7 @@ $("#txtValue").focusout(function formatJobValue() {
     var jobVal = jobValObj.val().trim().replace(',', '').replace('$', '');
 
     if (isNaN(jobVal) || jobVal < 0 || jobVal === '') {
+        jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(" "));
         toastr["info"]("Please enter a valid dollar amount.");
     } else {
         jobValObj.val(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(jobVal));
@@ -112,10 +113,5 @@ myClearwater.checkValues = function(){
     }
 }
 
-$(window).ready(function() {
-    var d = new Date();
-    $('#Copyright').html('Copyright '.concat(d.getFullYear()).concat(' all rights reserved'));
-    formatFees();
 
-});
 
