@@ -2,3 +2,5 @@
 This branch is the get up head for the starting point of the applciaton that is not responsive and  ADA compliant.
 
 Here is link to image of the page https://bit.ly/3oHLbUC.  There are no City marking.  It does not have any of the City Colurs and an infromational message in red error message(no Add complant) 
+
+The Fee Estimator is an applation that is used by thousands of Citizens to estimate the cost of permitting in the City of Clearwater/ 
