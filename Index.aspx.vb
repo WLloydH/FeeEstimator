@@ -1,191 +1,63 @@
-﻿
-Imports System.Data.SqlClient
+// 1. Define a Model to hold the data
+public class PermitFeeModel
+{
+    public string PermitType { get; set; }
+    public double PermitValue { get; set; }
+    public bool IsCommercial { get; set; }
+    public bool IsResidential { get; set; }
+    public bool IsOverTheCounter { get; set; }
+    public int TradeNumbers { get; set; }
+}
 
-Partial Class GovDeptsPlanningIndex
-    Inherits System.Web.UI.Page
-    Private cnStr As ConnectionStringSettingsCollection
-    Private AppSettings As NameValueCollection
-    Dim TradeNumbers As Integer
+public class FeeCalculationResult
+{
+    public decimal PermitFee { get; set; }
+    public decimal PlansFee { get; set; }
+    public decimal TradesFee { get; set; }
+    public decimal StateFee { get; set; }
+    public decimal Total { get; set; }
+}
 
-    Public Sub New()
-        cnStr = System.Configuration.ConfigurationManager.ConnectionStrings
-        AppSettings = System.Configuration.ConfigurationManager.AppSettings
-    End Sub
+// 2. Create a dedicated service for the business logic
+public class FeeCalculatorService
+{
+    private readonly string _connectionString;
 
-    Protected Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Init
-        Dim cmdCommon As New SqlCommand
-        Dim drCommon As SqlDataReader = Nothing
+    public FeeCalculatorService(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
 
-        pnlResults.Visible = False
-        Commercial.Checked = True
+    public async Task<FeeCalculationResult> CalculateFees(PermitFeeModel model)
+    {
+        // Parameter validation would go here
+        
+        using var connection = new SqlConnection(_connectionString);
+        using var command = new SqlCommand("spCalculateFee", connection)
+        {
+            CommandType = CommandType.StoredProcedure
+        };
 
-        lblExplainState.Text = "*   State Fee includes <i>Fl Building Commission </i> <u>and</u> <i> Fl Building Code Administration and Inspectors Board</i>. They are 3% of the Permit Fees, Plans Fee and Trades Fee or a minimum of $2."
-        lblDisclaimer.Text = "Disclaimer:   The above fee estimate does not include other fees such as impact fees, fire fees, right-of-way, tree removal and clearing and grubbing fees, some of which could be substantial.  For information concerning fire fees please call 727-562-4327 and for more information on other fees please call 727-562-4567. The City of Clearwater assumes no liability for any errors, omissions, or inaccuracies in the information provided. "
-        Try
-            With cmdCommon
-                .Connection = New SqlConnection(cnStr.Item("cnFeeEstimator").ConnectionString)
-                .Connection.Open()
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "spGetFeeTypes"
-                drCommon = .ExecuteReader
-            End With
+        command.Parameters.AddWithValue("@ResCom", model.IsCommercial ? "Commercial" : "Residential");
+        command.Parameters.AddWithValue("@Value", model.PermitValue);
+        command.Parameters.AddWithValue("@Trades", model.TradeNumbers);
+        command.Parameters.AddWithValue("@OverTheCounter", model.IsOverTheCounter ? 1 : 0);
 
-            With ddlPermitType
-                .DataSource = drCommon
-                .DataValueField = "CASE_TYPE"
-                .DataTextField = "PERMIT_TYPE"
-                .DataBind()
-            End With
-        Catch err As Exception
+        await connection.OpenAsync();
+        using var reader = await command.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+        
+        if (await reader.ReadAsync())
+        {
+            return new FeeCalculationResult
+            {
+                PermitFee = reader.GetDecimal(reader.GetOrdinal("PermitFee")),
+                PlansFee = reader.GetDecimal(reader.GetOrdinal("PlansFee")),
+                TradesFee = reader.GetDecimal(reader.GetOrdinal("Trades")),
+                StateFee = reader.GetDecimal(reader.GetOrdinal("StateFee")),
+                Total = reader.GetDecimal(reader.GetOrdinal("Total"))
+            };
+        }
 
-        Finally
-            If Not IsNothing(drCommon) Then
-                If Not drCommon.IsClosed Then drCommon.Close()
-                drCommon = Nothing
-            End If
-            If Not IsNothing(cmdCommon.Connection) Then
-                If Not cmdCommon.Connection.State = ConnectionState.Closed Then cmdCommon.Connection.Close()
-            End If
-            cmdCommon = Nothing
-        End Try
-
-
-    End Sub
-
-    Protected Sub txtSubmit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSubmit.Click
-        Dim resCom As String
-        Dim tradeNumbers As Integer = 0
-        Dim overTheCounter As Integer = 0
-
-        Session("PermitType") = ddlPermitType.SelectedIndex.ToString()
-        pnlResults.Visible = False
-
-        If String.IsNullOrEmpty(txtValue.Text) Then
-            Exit Sub
-        End If
-
-
-        If Not (IsNumeric(Trim(txtValue.Text))) Then
-            Exit Sub
-        End If
-
-        If ddlPermitType.SelectedIndex = 0 Then
-            Exit Sub
-        End If
-
-        If Trim(txtValue.Text) = "" Then
-            Exit Sub
-        End If
-
-        If Not (Commercial.Checked) And Not (Residential.Checked) Then
-            Exit Sub
-        End If
-        Session("PermitValue") = Double.Parse(Replace(Trim(txtValue.Text), "$", ""))
-
-        If Commercial.Checked Then resCom = "Commercial"
-        If Residential.Checked Then resCom = "Residential"
-
-        If ckbBuilding.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ckbElectric.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ckbRoof.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ckbMechanic.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ckbPlumbing.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ckbGas.Checked Then
-            TradeNumbers = TradeNumbers + 1
-        End If
-
-        If ddlPermitType.SelectedValue.Substring(0, 16) <> "Over the Counter" Then
-            overTheCounter = 0
-        Else
-            overTheCounter = 1
-        End If
-
-        Dim cmdCalculate As New SqlCommand
-        Dim drCalculate As SqlDataReader
-
-        Try
-            With cmdCalculate
-                .Connection = New SqlConnection(cnStr.Item("cnFeeEstimator").ConnectionString)
-                .Connection.Open()
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "spCalculateFee"
-                .Parameters.Add("@ResCom", SqlDbType.VarChar).Value = resCom
-                .Parameters.Add("@Value", SqlDbType.Int).Value = Session("PermitValue")
-                .Parameters.Add("@Trades", SqlDbType.Int).Value = TradeNumbers
-                .Parameters.Add("@OverTheCounter", SqlDbType.Int).Value = overTheCounter
-                drCalculate = .ExecuteReader(CommandBehavior.CloseConnection)
-            End With
-
-            If drCalculate.Read Then
-                Session("PermitFee") = drCalculate.Item("PermitFee")
-                Session("PlansFee") = drCalculate.Item("PlansFee")
-                Session("Trades") = drCalculate.Item("Trades")
-                Session("StateFee") = drCalculate.Item("StateFee")
-                Session("Total") = drCalculate.Item("Total")
-
-
-                If overTheCounter = 0 Then
-                    lblPlansFee.Text = "Review Fee: " & FormatCurrency(Session("PlansFee"))
-                Else
-                    lblPlansFee.Text = ""
-                End If
-                pnlResults.Visible = True
-                lblEstimate.Text = "Estimated Fees"
-                lblPermitFee.Text = "Permit Fee: " & FormatCurrency(Session("PermitFee"))
-                lblStateFee.Text = "State Fee:  " & FormatCurrency(Session("StateFee"))
-                lblTrades.Text = "Trades Fee: " & FormatCurrency(Session("Trades"))
-                lblTotal.Text = "Total:   " & FormatCurrency(Session("Total"))
-
-            End If
-
-        Catch ex As Exception
-        End Try
-
-
-    End Sub
-
-
-    Protected Sub txtReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles txtReset.Click
-        Clear()
-    End Sub
-
-    Public Sub Clear()
-        ddlPermitType.SelectedIndex = 0
-        txtValue.Text = ""
-        Commercial.Checked = True
-        Residential.Checked = False
-        Session("PlansFee") = ""
-        Session("PermitFee") = ""
-        Session("Surcharge") = ""
-        Session("PermitValue") = 0
-        TradeNumbers = 0
-        ckbBuilding.Checked = False
-        ckbElectric.Checked = False
-        ckbRoof.Checked = False
-        ckbMechanic.Checked = False
-        ckbPlumbing.Checked = False
-        ckbGas.Checked = False
-        lblPermitFee.Text = ""
-        lblTrades.Text = ""
-        lblPlansFee.Text = ""
-        lblStateFee.Text = ""
-        lblTotal.Text = ""
-        lblEstimate.Text = ""
-        pnlResults.Visible = False
-    End Sub
-End Class
+        return null;
+    }
+}
